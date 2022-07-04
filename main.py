@@ -1,7 +1,7 @@
-from random import randint, shuffle
+from random import choice, shuffle
 import string
 
-def passgenerator(letters,digits,symbols): #generates a list of random characters then shuffle it and returns string
+def passgenerator(letters,digits,symbols): #generates a list of random characters then shuffle it and returns string 
   
   randompass=[]
   
@@ -13,15 +13,15 @@ def passgenerator(letters,digits,symbols): #generates a list of random character
   
   for letter in range(0,letters):
     
-    randompass.append(lettersstr[randint(0,len(lettersstr)-1)])
+    randompass.append(choice(lettersstr))
   
   for digit in range(0,digits):
     
-    randompass.append(digitsstr[randint(0,len(digitsstr)-1)])
+    randompass.append(choice(digitsstr))
   
   for symbol in range(0,symbols):
   
-    randompass.append(symbolsstr[randint(0,len(symbolsstr)-1)])
+    randompass.append(choice(symbolsstr))
   
   shuffle(randompass)
   
@@ -30,7 +30,7 @@ def passgenerator(letters,digits,symbols): #generates a list of random character
   return (randompass)
 
 
-def main():
+def main(): #mainloop
   
   while True:
     
@@ -40,8 +40,8 @@ def main():
     
     passwordsymbols = int(input("how many symbols would you like in your password?\n"))    
     
-    print ("your random password is: {}".format(passgenerator(passwordletters,passworddigits,passwordsymbols)))
-    
+    print (f"your random password is: {passgenerator(passwordletters,passworddigits,passwordsymbols)}\nyour password legth is:  {len(passgenerator(passwordletters,passworddigits,passwordsymbols))}")
+   
     exit=input("generate another password y/n ?\n")
     
     if exit.capitalize() == "N":
